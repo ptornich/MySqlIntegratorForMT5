@@ -1,0 +1,382 @@
+[2021-02-09 07:53:39.346518] INFO Application start
+[2021-02-09 07:53:39.348295] INFO Dependencies check
+[2021-02-09 07:54:09.776019] DEBUG Main process end
+[2021-02-09 07:54:09.778013] INFO Application end
+[2021-02-09 07:57:04.068276] INFO Application started
+[2021-02-09 07:57:04.747850] INFO Dependencies checked
+[2021-02-09 07:57:04.833660] DEBUG Main process started
+[2021-02-09 08:02:42.299982] INFO Application started
+[2021-02-09 08:02:43.093588] INFO Dependencies checked
+[2021-02-09 08:02:43.095561] DEBUG Main process started
+[2021-02-09 08:03:29.084482] INFO Application started
+[2021-02-09 08:03:29.846207] INFO Dependencies checked
+[2021-02-09 08:03:29.847204] DEBUG Main process started
+[2021-02-09 08:03:31.306960] ERROR startIntegration() missing 1 required positional argument: 'window'
+[2021-02-09 08:03:31.313327] INFO Application ended
+[2021-02-09 08:03:39.668605] INFO Application started
+[2021-02-09 08:03:40.416478] INFO Dependencies checked
+[2021-02-09 08:03:40.417473] DEBUG Main process started
+[2021-02-09 08:03:59.395471] DEBUG Main process ended
+[2021-02-09 08:03:59.397468] INFO Application ended
+[2021-02-09 08:04:27.098800] INFO Application started
+[2021-02-09 08:04:27.850569] INFO Dependencies checked
+[2021-02-09 08:04:27.851536] DEBUG Main process started
+[2021-02-09 08:04:29.088178] INFO Integration started
+[2021-02-09 08:04:31.559420] INFO Integration stopped
+[2021-02-09 08:04:33.865323] INFO Integration started
+[2021-02-09 08:04:34.715310] INFO Integration stopped
+[2021-02-09 08:04:53.718783] DEBUG Main process ended
+[2021-02-09 08:04:53.719780] INFO Application ended
+[2021-02-09 10:08:45.324513] INFO Application started
+[2021-02-09 10:08:55.942517] INFO Application started
+[2021-02-09 10:08:59.010161] INFO Dependencies checked
+[2021-02-09 10:08:59.011127] DEBUG Main process started
+[2021-02-09 10:09:00.725274] INFO Integration started
+[2021-02-09 10:09:02.527516] ERROR stopIntegration() missing 1 required positional argument: 'qwe'
+[2021-02-09 10:09:02.530464] INFO Application ended
+[2021-02-09 10:11:39.462103] INFO Application started
+[2021-02-09 10:11:40.268992] INFO Dependencies checked
+[2021-02-09 10:11:40.269991] DEBUG Main process started
+[2021-02-09 10:11:42.823076] INFO Integration started
+[2021-02-09 10:11:43.570038] ERROR stopIntegration() missing 1 required positional argument: 'qwe'
+[2021-02-09 10:11:49.714074] ERROR stopIntegration() missing 1 required positional argument: 'qwe'
+[2021-02-09 10:11:50.456068] ERROR stopIntegration() missing 1 required positional argument: 'qwe'
+[2021-02-09 10:11:51.910054] DEBUG Main process ended
+[2021-02-09 10:11:51.915039] INFO Application ended
+[2021-02-09 10:12:22.671332] INFO Application started
+[2021-02-09 10:12:23.421843] INFO Dependencies checked
+[2021-02-09 10:12:23.422839] DEBUG Main process started
+[2021-02-09 10:12:26.182966] INFO Integration started
+[2021-02-09 10:12:26.970327] ERROR stopIntegration() missing 1 required positional argument: 'qwe'
+[2021-02-09 10:12:39.209991] DEBUG Main process ended
+[2021-02-09 10:12:39.211989] INFO Application ended
+[2021-02-09 10:13:06.913365] INFO Application started
+[2021-02-09 10:13:07.665254] INFO Dependencies checked
+[2021-02-09 10:13:07.666049] DEBUG Main process started
+[2021-02-09 10:13:09.701161] DEBUG Main process ended
+[2021-02-09 10:13:09.704154] INFO Application ended
+[2021-02-09 10:13:21.477004] INFO Application started
+[2021-02-09 10:13:22.227480] INFO Dependencies checked
+[2021-02-09 10:13:22.228494] DEBUG Main process started
+[2021-02-09 10:13:23.444789] INFO Integration started
+[2021-02-09 10:13:24.035913] ERROR stopIntegration() missing 1 required positional argument: 'asdasd'
+[2021-02-09 10:13:30.308129] ERROR stopIntegration() missing 1 required positional argument: 'asdasd'
+[2021-02-09 10:13:32.040948] DEBUG Main process ended
+[2021-02-09 10:13:32.041946] INFO Application ended
+[2021-02-09 10:14:20.113203] INFO Application started
+[2021-02-09 10:14:20.859673] INFO Dependencies checked
+[2021-02-09 10:14:20.860646] DEBUG Main process started
+[2021-02-09 10:14:23.044882] DEBUG Main process ended
+[2021-02-09 10:14:23.046877] INFO Application ended
+[2021-02-09 10:16:50.463135] INFO Application started
+[2021-02-09 10:16:51.262177] INFO Dependencies checked
+[2021-02-09 10:16:51.264173] DEBUG Main process started
+[2021-02-09 10:16:54.956512] INFO Integration started
+[2021-02-09 10:16:56.110728] ERROR stopIntegration() missing 1 required positional argument: 'asdasd'
+[2021-02-09 10:17:03.048435] DEBUG Main process ended
+[2021-02-09 10:17:03.050432] INFO Application ended
+[2021-02-09 10:17:21.880329] INFO Application started
+[2021-02-09 10:17:22.684874] INFO Dependencies checked
+[2021-02-09 10:17:22.685861] DEBUG Main process started
+[2021-02-09 10:17:24.143262] INFO Integration started
+[2021-02-09 10:17:25.850536] INFO Integration stopped
+[2021-02-09 10:17:34.053667] DEBUG Main process ended
+[2021-02-09 10:17:34.056659] INFO Application ended
+[2021-02-09 10:36:04.894863] INFO Application started
+[2021-02-09 10:36:05.652292] INFO Dependencies checked
+[2021-02-09 10:36:05.653257] DEBUG Main process started
+[2021-02-09 10:36:07.532185] INFO Integration started
+[2021-02-09 10:36:15.636254] INFO Integration stopped
+[2021-02-09 10:36:26.535850] INFO Integration started
+[2021-02-09 10:36:31.748159] INFO Integration stopped
+[2021-02-09 10:36:33.808631] DEBUG Main process ended
+[2021-02-09 10:36:33.812620] INFO Application ended
+[2021-02-09 10:39:34.722204] INFO Application started
+[2021-02-09 10:39:35.484171] INFO Dependencies checked
+[2021-02-09 10:39:35.485168] DEBUG Main process started
+[2021-02-09 10:39:37.011912] INFO Integration started
+[2021-02-09 10:40:18.436080] INFO Integration stopped
+[2021-02-09 10:40:25.133896] DEBUG Main process ended
+[2021-02-09 10:40:25.135645] INFO Application ended
+[2021-02-09 10:40:37.026923] INFO Application started
+[2021-02-09 10:40:37.774979] INFO Dependencies checked
+[2021-02-09 10:40:37.775977] DEBUG Main process started
+[2021-02-09 10:40:39.231934] INFO Integration started
+[2021-02-09 10:41:38.608321] INFO Application started
+[2021-02-09 10:41:39.365137] INFO Dependencies checked
+[2021-02-09 10:41:39.365687] DEBUG Main process started
+[2021-02-09 10:41:40.480393] INFO Integration started
+[2021-02-09 10:41:49.113861] INFO Integration stopped
+[2021-02-09 10:41:51.634912] DEBUG Main process ended
+[2021-02-09 10:41:51.636907] INFO Application ended
+[2021-02-09 10:56:24.598057] INFO Application started
+[2021-02-09 10:56:25.358977] INFO Dependencies checked
+[2021-02-09 10:56:25.360006] DEBUG Main process started
+[2021-02-09 10:56:27.835053] INFO Integration started
+[2021-02-09 10:56:37.050985] INFO Integration stopped
+[2021-02-09 10:56:44.577852] DEBUG Main process ended
+[2021-02-09 10:56:44.580845] INFO Application ended
+[2021-02-09 10:57:43.617940] INFO Application started
+[2021-02-09 10:57:44.372848] INFO Dependencies checked
+[2021-02-09 10:57:44.373848] DEBUG Main process started
+[2021-02-09 10:57:46.286343] INFO Integration started
+[2021-02-09 10:57:49.434766] INFO Integration stopped
+[2021-02-09 10:57:50.954425] INFO Integration started
+[2021-02-09 10:57:57.130792] INFO Integration stopped
+[2021-02-09 10:58:00.605439] INFO Integration started
+[2021-02-09 10:58:02.204149] DEBUG Main process ended
+[2021-02-09 10:58:02.207140] INFO Application ended
+[2021-02-09 10:58:26.636311] INFO Application started
+[2021-02-09 10:58:27.379293] INFO Dependencies checked
+[2021-02-09 10:58:27.380350] DEBUG Main process started
+[2021-02-09 10:58:37.825720] DEBUG Main process ended
+[2021-02-09 10:58:37.827715] INFO Application ended
+[2021-02-09 10:59:00.424831] INFO Application started
+[2021-02-09 10:59:01.234904] INFO Dependencies checked
+[2021-02-09 10:59:01.235901] DEBUG Main process started
+[2021-02-09 10:59:03.353112] INFO Integration started
+[2021-02-09 10:59:04.810210] DEBUG Main process ended
+[2021-02-09 10:59:04.813202] INFO Application ended
+[2021-02-09 10:59:11.036532] INFO Application started
+[2021-02-09 10:59:11.778017] INFO Dependencies checked
+[2021-02-09 10:59:11.778850] DEBUG Main process started
+[2021-02-09 10:59:13.490516] INFO Integration started
+[2021-02-09 10:59:17.646876] INFO Integration stopped
+[2021-02-09 10:59:18.680681] INFO Integration started
+[2021-02-09 10:59:21.844445] INFO Integration stopped
+[2021-02-09 10:59:24.483955] DEBUG Main process ended
+[2021-02-09 10:59:24.486947] INFO Application ended
+[2021-02-09 11:00:24.869722] INFO Application started
+[2021-02-09 11:00:25.624418] INFO Dependencies checked
+[2021-02-09 11:00:25.625564] DEBUG Main process started
+[2021-02-09 11:00:28.584353] INFO Integration started
+[2021-02-09 11:00:34.783261] INFO Integration stopped
+[2021-02-09 11:00:36.682082] DEBUG Main process ended
+[2021-02-09 11:00:36.687071] INFO Application ended
+[2021-02-09 11:20:13.602996] INFO Application started
+[2021-02-09 11:20:14.359575] INFO Dependencies checked
+[2021-02-09 11:20:14.360571] DEBUG Main process started
+[2021-02-09 11:20:24.758877] INFO Integration started
+[2021-02-09 11:22:58.519020] INFO Integration stopped
+[2021-02-09 11:22:59.403327] INFO Integration started
+[2021-02-09 11:40:05.830753] INFO Application started
+[2021-02-09 11:40:06.598418] INFO Dependencies checked
+[2021-02-09 11:40:06.600413] DEBUG Main process started
+[2021-02-09 11:40:10.450638] INFO Integration started
+[2021-02-09 11:40:25.599055] INFO Application started
+[2021-02-09 11:40:26.346411] INFO Dependencies checked
+[2021-02-09 11:40:26.347295] DEBUG Main process started
+[2021-02-09 11:40:29.892434] INFO Integration started
+[2021-02-09 11:40:34.078328] INFO Integration stopped
+[2021-02-09 11:40:35.910856] DEBUG Main process ended
+[2021-02-09 11:40:35.913848] INFO Application ended
+[2021-02-09 11:41:13.924702] INFO Application started
+[2021-02-09 11:41:14.678569] INFO Dependencies checked
+[2021-02-09 11:41:14.679567] DEBUG Main process started
+[2021-02-09 11:41:16.683148] INFO Integration started
+[2021-02-09 11:41:18.830593] INFO Integration stopped
+[2021-02-09 11:41:42.308351] DEBUG Main process ended
+[2021-02-09 11:41:42.313340] INFO Application ended
+[2021-02-09 12:09:16.236320] INFO Application started
+[2021-02-09 12:09:17.379553] INFO Dependencies checked
+[2021-02-09 12:09:17.380550] DEBUG Main process started
+[2021-02-09 12:09:22.788252] DEBUG Main process ended
+[2021-02-09 12:09:22.792242] INFO Application ended
+[2021-02-09 12:09:44.082915] INFO Application started
+[2021-02-09 12:09:44.838391] INFO Dependencies checked
+[2021-02-09 12:09:44.839361] DEBUG Main process started
+[2021-02-09 12:09:50.093670] INFO Integration started
+[2021-02-09 12:09:52.247453] INFO Integration stopped
+[2021-02-09 12:09:54.054635] DEBUG Main process ended
+[2021-02-09 12:09:54.056623] INFO Application ended
+[2021-02-09 12:09:58.179411] INFO Application started
+[2021-02-09 12:09:58.924489] INFO Dependencies checked
+[2021-02-09 12:09:58.926451] DEBUG Main process started
+[2021-02-09 12:10:02.073156] DEBUG Main process ended
+[2021-02-09 12:10:02.076148] INFO Application ended
+[2021-02-09 12:10:34.050840] INFO Application started
+[2021-02-09 12:10:34.833751] INFO Dependencies checked
+[2021-02-09 12:10:49.120384] INFO Integration started
+[2021-02-09 12:10:51.277305] INFO Integration stopped
+[2021-02-09 12:10:53.345638] DEBUG Main process ended
+[2021-02-09 12:10:53.349624] INFO Application ended
+[2021-02-09 12:10:57.626300] INFO Application started
+[2021-02-09 12:10:58.383855] INFO Dependencies checked
+[2021-02-09 12:10:58.385137] DEBUG Main process started
+[2021-02-09 12:11:03.197065] DEBUG Main process ended
+[2021-02-09 12:11:03.200058] INFO Application ended
+[2021-02-09 12:11:32.391313] INFO Application started
+[2021-02-09 12:11:33.141183] INFO Dependencies checked
+[2021-02-09 12:11:33.142180] DEBUG Main process started
+[2021-02-09 12:11:39.482488] DEBUG Main process ended
+[2021-02-09 12:11:39.486477] INFO Application ended
+[2021-02-09 12:16:07.481654] INFO Application started
+[2021-02-09 12:16:08.264126] INFO Dependencies checked
+[2021-02-09 12:16:08.264922] DEBUG Main process started
+[2021-02-09 12:16:14.018888] DEBUG Main process ended
+[2021-02-09 12:16:14.021881] INFO Application ended
+[2021-02-09 12:16:20.437469] INFO Application started
+[2021-02-09 12:16:21.214295] INFO Dependencies checked
+[2021-02-09 12:16:21.215292] DEBUG Main process started
+[2021-02-09 12:16:26.524940] INFO Integration started
+[2021-02-09 12:16:28.701139] INFO Integration stopped
+[2021-02-09 12:16:30.297006] DEBUG Main process ended
+[2021-02-09 12:16:30.299002] INFO Application ended
+[2021-02-09 12:17:07.122033] INFO Application started
+[2021-02-09 12:17:07.899202] INFO Dependencies checked
+[2021-02-09 12:17:07.900354] DEBUG Main process started
+[2021-02-09 12:17:12.824418] INFO Integration started
+[2021-02-09 12:17:18.003410] INFO Integration stopped
+[2021-02-09 12:17:19.433970] DEBUG Main process ended
+[2021-02-09 12:17:19.436962] INFO Application ended
+[2021-02-09 12:17:32.822451] INFO Application started
+[2021-02-09 12:17:33.581454] INFO Dependencies checked
+[2021-02-09 12:17:33.582488] DEBUG Main process started
+[2021-02-09 12:17:43.540123] INFO Integration started
+[2021-02-09 12:17:47.733075] INFO Integration stopped
+[2021-02-09 12:17:49.168552] DEBUG Main process ended
+[2021-02-09 12:17:49.171542] INFO Application ended
+[2021-02-09 12:17:53.321367] INFO Application started
+[2021-02-09 12:17:54.078623] INFO Dependencies checked
+[2021-02-09 12:17:54.079781] DEBUG Main process started
+[2021-02-09 12:17:58.349105] DEBUG Main process ended
+[2021-02-09 12:17:58.351101] INFO Application ended
+[2021-02-09 12:18:16.203453] INFO Application started
+[2021-02-09 12:18:16.942409] INFO Dependencies checked
+[2021-02-09 12:18:16.943439] DEBUG Main process started
+[2021-02-09 12:18:19.785702] DEBUG Main process ended
+[2021-02-09 12:18:19.788693] INFO Application ended
+[2021-02-09 12:18:31.671518] INFO Application started
+[2021-02-09 12:18:32.443562] INFO Dependencies checked
+[2021-02-09 12:18:32.443802] DEBUG Main process started
+[2021-02-09 12:18:38.289213] INFO Integration started
+[2021-02-09 12:18:41.569116] DEBUG Main process ended
+[2021-02-09 12:18:41.570115] INFO Application ended
+[2021-02-09 12:18:46.143580] INFO Application started
+[2021-02-09 12:18:46.883771] INFO Dependencies checked
+[2021-02-09 12:18:46.884737] DEBUG Main process started
+[2021-02-09 12:18:50.489542] DEBUG Main process ended
+[2021-02-09 12:18:50.492534] INFO Application ended
+[2021-02-09 12:19:37.086419] INFO Application started
+[2021-02-09 12:19:37.860860] INFO Dependencies checked
+[2021-02-09 12:19:37.861827] DEBUG Main process started
+[2021-02-09 12:19:40.201717] INFO Integration started
+[2021-02-09 12:19:44.402305] INFO Integration stopped
+[2021-02-09 12:19:49.640013] INFO Integration started
+[2021-02-09 12:19:53.806894] INFO Integration stopped
+[2021-02-09 12:19:54.712488] DEBUG Main process ended
+[2021-02-09 12:19:54.715479] INFO Application ended
+[2021-02-09 12:20:39.236844] INFO Application started
+[2021-02-09 12:20:40.004454] INFO Dependencies checked
+[2021-02-09 12:20:40.005451] DEBUG Main process started
+[2021-02-09 12:20:46.766521] INFO Integration started
+[2021-02-09 12:20:50.911873] INFO Integration stopped
+[2021-02-09 12:20:52.998965] DEBUG Main process ended
+[2021-02-09 12:20:53.002955] INFO Application ended
+[2021-02-09 12:21:06.273689] INFO Application started
+[2021-02-09 12:21:07.021828] INFO Dependencies checked
+[2021-02-09 12:21:07.022826] DEBUG Main process started
+[2021-02-09 12:21:09.512957] DEBUG Main process ended
+[2021-02-09 12:21:09.517944] INFO Application ended
+[2021-02-09 12:24:02.708403] INFO Application started
+[2021-02-09 12:24:06.499094] INFO Dependencies checked
+[2021-02-09 12:24:06.510065] DEBUG Main process started
+[2021-02-09 12:24:11.508084] DEBUG Main process ended
+[2021-02-09 12:24:11.511075] INFO Application ended
+[2021-02-09 12:30:46.552300] INFO Application started
+[2021-02-09 12:30:47.346253] INFO Dependencies checked
+[2021-02-09 12:30:47.347076] DEBUG Main process started
+[2021-02-09 12:31:30.856234] INFO Integration started
+[2021-02-09 12:32:11.973405] INFO Application started
+[2021-02-09 12:32:12.758604] INFO Dependencies checked
+[2021-02-09 12:32:12.759173] DEBUG Main process started
+[2021-02-09 12:32:14.870652] INFO Integration started
+[2021-02-09 12:32:27.931800] INFO Integration stopped
+[2021-02-09 12:38:07.360272] INFO Integration started
+[2021-02-09 12:38:20.766203] DEBUG Main process ended
+[2021-02-09 12:38:20.768198] INFO Application ended
+[2021-02-09 12:38:46.229002] INFO Application started
+[2021-02-09 12:38:46.990678] INFO Dependencies checked
+[2021-02-09 12:38:46.991458] DEBUG Main process started
+[2021-02-09 12:38:49.111845] INFO Integration started
+[2021-02-09 12:38:53.058923] INFO Integration stopped
+[2021-02-09 12:38:54.438179] DEBUG Main process ended
+[2021-02-09 12:38:54.440174] INFO Application ended
+[2021-02-09 12:39:22.424253] INFO Application started
+[2021-02-09 12:39:23.191978] INFO Dependencies checked
+[2021-02-09 12:39:23.193292] DEBUG Main process started
+[2021-02-09 12:39:24.442280] INFO Integration started
+[2021-02-09 12:39:29.410702] INFO Integration stopped
+[2021-02-09 12:39:29.962695] DEBUG Main process ended
+[2021-02-09 12:39:29.964691] INFO Application ended
+[2021-02-09 12:40:25.768211] INFO Application started
+[2021-02-09 12:40:26.528973] INFO Dependencies checked
+[2021-02-09 12:40:26.530175] DEBUG Main process started
+[2021-02-09 12:40:28.064415] INFO Integration started
+[2021-02-09 12:45:59.893264] INFO Application started
+[2021-02-09 12:46:00.655056] INFO Dependencies checked
+[2021-02-09 12:46:00.655592] DEBUG Main process started
+[2021-02-09 12:46:02.788258] INFO Integration started
+[2021-02-09 12:46:09.047046] INFO Integration stopped
+[2021-02-09 12:46:10.957574] DEBUG Main process ended
+[2021-02-09 12:46:10.961564] INFO Application ended
+[2021-02-09 13:00:36.957975] INFO Application started
+[2021-02-09 13:00:37.736215] INFO Dependencies checked
+[2021-02-09 13:00:37.737180] DEBUG Main process started
+[2021-02-09 13:00:39.839704] INFO Integration started
+[2021-02-09 13:00:45.302610] INFO Integration stopped
+[2021-02-09 13:38:05.543274] INFO Integration started
+[2021-02-09 13:38:13.007420] INFO Integration stopped
+[2021-02-09 13:39:10.923952] INFO Integration started
+[2021-02-09 13:39:16.235994] INFO Integration stopped
+[2021-02-09 13:39:46.671612] INFO Application started
+[2021-02-09 13:39:49.542643] INFO Dependencies checked
+[2021-02-09 13:39:49.543641] DEBUG Main process started
+[2021-02-09 13:39:51.064656] INFO Integration started
+[2021-02-09 13:40:13.743213] INFO Application started
+[2021-02-09 13:40:14.497521] INFO Dependencies checked
+[2021-02-09 13:40:14.498267] DEBUG Main process started
+[2021-02-09 13:40:15.844302] INFO Integration started
+[2021-02-09 13:41:22.808682] INFO Application started
+[2021-02-09 13:41:23.588597] INFO Dependencies checked
+[2021-02-09 13:41:23.589562] DEBUG Main process started
+[2021-02-09 13:41:24.813738] INFO Integration started
+[2021-02-09 13:41:29.292017] INFO Integration stopped
+[2021-02-09 13:42:01.030444] INFO Integration started
+[2021-02-09 13:47:48.766437] INFO Application started
+[2021-02-09 13:47:49.537279] INFO Dependencies checked
+[2021-02-09 13:47:49.538275] DEBUG Main process started
+[2021-02-09 13:47:51.292019] INFO Integration started
+[2021-02-09 13:48:02.634569] INFO Integration stopped
+[2021-02-09 13:48:54.672150] INFO Application started
+[2021-02-09 13:48:55.442222] INFO Dependencies checked
+[2021-02-09 13:48:55.443271] DEBUG Main process started
+[2021-02-09 13:48:56.916249] INFO Integration started
+[2021-02-09 13:49:01.337614] INFO Integration stopped
+[2021-02-09 13:49:02.648024] DEBUG Main process ended
+[2021-02-09 13:49:02.651014] INFO Application ended
+[2021-02-09 13:49:24.711261] INFO Application started
+[2021-02-09 13:49:25.475527] INFO Dependencies checked
+[2021-02-09 13:49:25.476750] DEBUG Main process started
+[2021-02-09 13:49:26.737727] INFO Integration started
+[2021-02-09 13:49:31.442423] INFO Integration stopped
+[2021-02-09 13:49:32.789090] DEBUG Main process ended
+[2021-02-09 13:49:32.792082] INFO Application ended
+[2021-02-09 13:49:53.473278] INFO Application started
+[2021-02-09 13:49:54.249766] INFO Dependencies checked
+[2021-02-09 13:49:54.250245] DEBUG Main process started
+[2021-02-09 13:49:55.554818] INFO Integration started
+[2021-02-09 13:50:00.352059] INFO Integration stopped
+[2021-02-09 13:50:02.369349] DEBUG Main process ended
+[2021-02-09 13:50:02.371345] INFO Application ended
+[2021-02-09 13:50:20.161619] INFO Application started
+[2021-02-09 13:50:20.915354] INFO Dependencies checked
+[2021-02-09 13:50:20.916539] DEBUG Main process started
+[2021-02-09 13:50:22.342198] INFO Integration started
+[2021-02-09 13:53:06.354913] INFO Application started
+[2021-02-09 13:53:07.103089] INFO Dependencies checked
+[2021-02-09 13:53:07.105047] DEBUG Main process started
+[2021-02-09 13:53:08.393169] INFO Integration started
+[2021-02-09 13:53:12.636042] INFO Integration stopped
+[2021-02-09 13:53:25.030599] DEBUG Main process ended
+[2021-02-09 13:53:25.035586] INFO Application ended
