@@ -24,6 +24,17 @@ class Settings:
     Database = ''
     VerboseLogging = False
 
+    def setValuesFromWindow(self):
+        self.MySqlHost = window['Host'].get()
+        self.Username = window['User'].get()
+        self.Database = window['Database'].get()
+        self.VerboseLogging = window['Verbose'].get()
+
+        if window['Password'].get() != __hiddenPaswword__:
+            self.Password = window['Password'].get()
+
+        return self
+
     def save(self):
         import pickle
         with open(__settingsFileName__, 'wb+') as f:
@@ -50,9 +61,14 @@ class IntegrationTask:
     import mysql.connector as _mysql
 
     def __init__(self):
+        self._running = False
+        if not self._metatrader.initialize():
+            raise Exception("initialize() failed, last error: " + str(self._metatrader.last_error()))
         self._running = True
-        self._metatrader.initialize()
-      
+        
+        accountInfo = self.getAccountInfo()
+        self._login = accountInfo.login
+        
     def terminate(self): 
         self._running = False
       
@@ -63,79 +79,153 @@ class IntegrationTask:
             password=settings.Password,
             database=settings.Database)
 
-    def sendAccountInfo(self):
+    def getAccountInfo(self):
         accountInfo = self._metatrader.account_info()
+        if accountInfo == None and len(self._metatrader.last_error()) > 0:
+            raise Exception("account_info() failed, last error: " + str(self._metatrader.last_error()))
+        return accountInfo
+
+    def getPositions(self):
+        positions = self._metatrader.positions_get()
+        if positions == None and len(self._metatrader.last_error()) > 0:
+            raise Exception("history_deals_get() failed, last error: " + str(self._metatrader.last_error()))
+        return positions
+
+    def getHistory(self):
+        from datetime import datetime
+        deals = self._metatrader.history_deals_get(datetime(2000,1,1), datetime.now())
+        if deals == None and len(self._metatrader.last_error()) > 0:
+            raise Exception("history_deals_get() failed, last error: " + str(self._metatrader.last_error()))
+        return deals
+
+    def sendAccountInfo(self, forceUpdate = False):
+        log("sendAccountInfo started", "verbose")
+        positions = self.getPositions()
         
+        if len(positions) == 0 and not forceUpdate:
+            return
+
+        accountInfo = self.getAccountInfo()
+
         db = self.getDbConnection()
         dbCursor = db.cursor()
         dbCursor.execute(f"SELECT login FROM AccountInfo WHERE login = {accountInfo.login} LIMIT 1")
         dbResults = dbCursor.fetchall()
         
         if len(dbResults) > 0:
-            # TODO
-            stmt = f"UPDATE AccountInfo SET leverage='{accountInfo.leverage}' WHERE login='{accountInfo.login}'"
+            stmt = f"""
+                UPDATE AccountInfo SET
+                    trade_mode='{accountInfo.trade_mode}',
+                    leverage='{accountInfo.leverage}',
+                    limit_orders='{accountInfo.limit_orders}',
+                    margin_so_mode='{accountInfo.margin_so_mode}',
+                    trade_allowed='{accountInfo.trade_allowed}',
+                    trade_expert='{accountInfo.trade_expert}',
+                    margin_mode='{accountInfo.margin_mode}',
+                    currency_digits='{accountInfo.currency_digits}',
+                    fifo_close='{accountInfo.fifo_close}',
+                    balance='{accountInfo.balance}',
+                    credit='{accountInfo.credit}',
+                    profit='{accountInfo.profit}',
+                    equity='{accountInfo.equity}',
+                    margin='{accountInfo.margin}',
+                    margin_free='{accountInfo.margin_free}',
+                    margin_level='{accountInfo.margin_level}',
+                    margin_so_call='{accountInfo.margin_so_call}',
+                    margin_so_so='{accountInfo.margin_so_so}',
+                    margin_initial='{accountInfo.margin_initial}',
+                    margin_maintenance='{accountInfo.margin_maintenance}',
+                    assets='{accountInfo.assets}',
+                    liabilities='{accountInfo.liabilities}',
+                    commission_blocked='{accountInfo.commission_blocked}',
+                    name='{accountInfo.name}',
+                    server='{accountInfo.server}',
+                    currency='{accountInfo.currency}',
+                    company='{accountInfo.company}'
+                WHERE login='{accountInfo.login}'"""
             dbCursor.execute(stmt)
         else:
-            # TODO
-            stmt = "INSERT INTO AccountInfo (login, trade_mode, leverage, limit_orders, margin_so_mode, trade_allowed, trade_expert, margin_mode, currency_digits, fifo_close, balance, credit, profit, equity, margin, margin_free, margin_level, margin_so_call, margin_so_so, margin_initial, margin_maintenance, assets, liabilities, commission_blocked, name, server, currency, company)"
-            stmt += f"VALUES ('{accountInfo.login}', '{accountInfo.trade_mode}', '{accountInfo.leverage}', '{accountInfo.limit_orders}', '{accountInfo.margin_so_mode}', '{accountInfo.trade_allowed}', '{accountInfo.trade_expert}', '{accountInfo.margin_mode}', '{accountInfo.currency_digits}', '{accountInfo.fifo_close}', '{accountInfo.balance}', '{accountInfo.credit}', '{accountInfo.profit}', '{accountInfo.equity}', '{accountInfo.margin}', '{accountInfo.margin_free}', '{accountInfo.margin_level}', '{accountInfo.margin_so_call}', '{accountInfo.margin_so_so}', '{accountInfo.margin_initial}', '{accountInfo.margin_maintenance}', '{accountInfo.assets}', '{accountInfo.liabilities}', '{accountInfo.commission_blocked}', '{accountInfo.name}', '{accountInfo.server}', '{accountInfo.currency}', '{accountInfo.company}');"
+            stmt = "INSERT INTO AccountInfo (`login`, `trade_mode`, `leverage`, `limit_orders`, `margin_so_mode`, `trade_allowed`, `trade_expert`, `margin_mode`, `currency_digits`, `fifo_close`, `balance`, `credit`, `profit`, `equity`, `margin`, `margin_free`, `margin_level`, `margin_so_call`, `margin_so_so`, `margin_initial`, `margin_maintenance`, `assets`, `liabilities`, `commission_blocked`, `name`, `server`, `currency`, `company`)"
+            stmt += f" VALUES ('{accountInfo.login}', '{accountInfo.trade_mode}', '{accountInfo.leverage}', '{accountInfo.limit_orders}', '{accountInfo.margin_so_mode}', '{accountInfo.trade_allowed}', '{accountInfo.trade_expert}', '{accountInfo.margin_mode}', '{accountInfo.currency_digits}', '{accountInfo.fifo_close}', '{accountInfo.balance}', '{accountInfo.credit}', '{accountInfo.profit}', '{accountInfo.equity}', '{accountInfo.margin}', '{accountInfo.margin_free}', '{accountInfo.margin_level}', '{accountInfo.margin_so_call}', '{accountInfo.margin_so_so}', '{accountInfo.margin_initial}', '{accountInfo.margin_maintenance}', '{accountInfo.assets}', '{accountInfo.liabilities}', '{accountInfo.commission_blocked}', '{accountInfo.name}', '{accountInfo.server}', '{accountInfo.currency}', '{accountInfo.company}')"
             dbCursor.execute(stmt)
             
         db.commit()
+        log("sendAccountInfo ended", "verbose")
 
     def sendPositions(self):
-        print(self._metatrader.account_info())
+        log("sendPositions started", "verbose")
+        # TODO
+        positions = self.getPositions()
+        print(positions)
+        log("sendPositions ended", "verbose")
 
     def sendHistory(self):
-        print(self._metatrader.account_info())
+        log("sendHistory started", "verbose")
+        deals = self.getHistory()
+
+        db = self.getDbConnection()
+        dbCursor = db.cursor()
+        dbCursor.execute(f"SELECT MAX(ticket) FROM History WHERE login = {self._login} LIMIT 1")
+        dbResults = dbCursor.fetchall()
+        
+        lastTicket = 0
+
+        if len(dbResults) > 0 and dbResults[0][0] != None:
+            lastTicket = dbResults[0][0]
+            
+        if deals[-1].ticket > lastTicket:
+            for deal in deals:
+                if deal.ticket > lastTicket:
+                    stmt = "INSERT INTO History (`login`, `ticket`, `order`, `time`, `time_msc`, `type`, `entry`, `magic`, `position_id`, `reason`, `volume`, `price`, `commission`, `swap`, `profit`, `fee`, `symbol`, `comment`, `external_id`)"
+                    stmt += f" VALUES ('{self._login}', '{deal.ticket}', '{deal.order}', '{deal.time}', '{deal.time_msc}', '{deal.type}', '{deal.entry}', '{deal.magic}', '{deal.position_id}', '{deal.reason}', '{deal.volume}', '{deal.price}', '{deal.commission}', '{deal.swap}', '{deal.profit}', '{deal.fee}', '{deal.symbol}', '{deal.comment}', '{deal.external_id}')"
+                    dbCursor.execute(stmt)
+                    db.commit()
+
+        log("sendHistory ended", "verbose")
 
     def run(self):
         import time
-        log("Integration started", "info")
+        log("Integration started", "verbose")
 
-        settings.MySqlHost = window['Host'].get()
-        settings.Username = window['User'].get()
-        settings.Database = window['Database'].get()
-        settings.VerboseLogging = window['Verbose'].get()
+        try:
+            window['Stop'].update(disabled=False)
+            window['Start'].update(disabled=True)
+            window['Host'].update(disabled=True, text_color='dark grey')
+            window['User'].update(disabled=True, text_color='dark grey')
+            window['Password'].update(settings.displayPassword(), disabled=True, text_color='dark grey')
+            window['Database'].update(disabled=True, text_color='dark grey')
+            window['Verbose'].update(disabled=True)
 
-        if window['Password'].get() != __hiddenPaswword__:
-            settings.Password = window['Password'].get()
+            delay = 0
+            forceAccountInfoUpdate = True
+            while self._running:
+                if delay == 0:
+                    window['Stop'].update(disabled=True)
+                    window['Output'].update('Running')
+                    self.sendAccountInfo(forceAccountInfoUpdate)
+                    self.sendPositions()
+                    self.sendHistory()
+                    forceAccountInfoUpdate = False
+                    delay = 60
+                else:
+                    window['Stop'].update(disabled=False)
+                    delay -= 1
+                    window['Output'].update(f'Waiting... {delay}')
+                    time.sleep(1)
 
-        settings.save()
+            window['Output'].update('')
+            window['Stop'].update(disabled=True)
+            window['Start'].update(disabled=False)
+            window['Host'].update(disabled=False, text_color='white')
+            window['User'].update(disabled=False, text_color='white')
+            window['Password'].update(disabled=False, text_color='white')
+            window['Database'].update(disabled=False, text_color='white')
+            window['Verbose'].update(disabled=False)
+        except Exception as ex:
+            log(ex, 'error')
+            window['Output'].update(f'Exception: {ex}', text_color='red')
 
-        window['Stop'].update(disabled=False)
-        window['Start'].update(disabled=True)
-        window['Host'].update(disabled=True, text_color='dark grey')
-        window['User'].update(disabled=True, text_color='dark grey')
-        window['Password'].update(settings.displayPassword(), disabled=True, text_color='dark grey')
-        window['Database'].update(disabled=True, text_color='dark grey')
-        window['Verbose'].update(disabled=True)
-
-        delay = 0
-        while self._running:
-            if delay == 0:
-                window['Stop'].update(disabled=True)
-                window['Output'].update('Running')
-                self.sendAccountInfo()
-                #self.sendHistory()
-                #self.sendPositions()
-                delay = 60
-            else:
-                window['Stop'].update(disabled=False)
-                delay -= 1
-                window['Output'].update(f'Waiting... {delay}')
-                time.sleep(1)
-
-        window['Output'].update('')
-        window['Stop'].update(disabled=True)
-        window['Start'].update(disabled=False)
-        window['Host'].update(disabled=False, text_color='white')
-        window['User'].update(disabled=False, text_color='white')
-        window['Password'].update(disabled=False, text_color='white')
-        window['Database'].update(disabled=False, text_color='white')
-        window['Verbose'].update(disabled=False)
-
-        log("Integration stopped", "info")
+        log("Integration stopped", "verbose")
         
 def findOrCreateLogFilePath():
     import os
@@ -150,12 +240,12 @@ def showLogFile():
     sp.Popen(["notepad.exe", logFilePath])
 
 def log(txt, severity):
-    if severity.lower() == 'debug' and not settings.VerboseLogging :
+    if severity.lower() == 'verbose' and not settings.VerboseLogging :
         return
     from datetime import datetime
     logFilePath = findOrCreateLogFilePath()
     with open(logFilePath, 'a') as f:
-        txt = f'[{datetime.now()}] {severity.upper()} {txt}\n'
+        txt = f'[{datetime.now()}] {severity.upper()}\t{txt}\n'
         f.write(txt);
 
 def createWindow():
@@ -181,7 +271,7 @@ def main():
     import PySimpleGUI as sg
     import threading
 
-    log("Main process started", "debug")
+    log("Main process started", "info")
     
     # Display and interact with the Window using an Event Loop
     while True:
@@ -189,9 +279,11 @@ def main():
 
         try:
             if event == sg.WINDOW_CLOSED:
+                settings.setValuesFromWindow().save()
                 break
     
             if event == 'Start':
+                settings.setValuesFromWindow().save()
                 integrationTask = IntegrationTask()
                 thread = threading.Thread(target=integrationTask.run, daemon=True)
                 thread.start()
@@ -205,7 +297,7 @@ def main():
             log(ex, 'error')
             window['Output'].update(f'Exception: {ex}', text_color='red')
 
-    log("Main process ended", "debug")
+    log("Main process ended", "info")
 
 
 if __name__ == '__main__':
