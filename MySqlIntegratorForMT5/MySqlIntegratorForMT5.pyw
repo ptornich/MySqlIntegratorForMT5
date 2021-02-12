@@ -58,6 +58,13 @@ class Settings:
         else:
             return ''
 
+    def getDelay(self):
+        try:
+            return int(self.Delay)
+        except ValueError:
+            return 0
+
+
 class IntegrationTask: 
     import MetaTrader5 as _metatrader
     import mysql.connector as _mysql
@@ -226,11 +233,7 @@ class IntegrationTask:
         try:
             enableFieldsStarted()
 
-            try:
-                delay = int(settings.Delay)
-            except ValueError:
-                delay = 0
-            
+            delay = 0
             forceAccountInfoUpdate = True
             while self._running:
                 if delay == 0:
@@ -240,7 +243,7 @@ class IntegrationTask:
                     self.sendPositions()
                     self.sendHistory()
                     forceAccountInfoUpdate = False
-                    delay = 60
+                    delay = settings.getDelay()
                 else:
                     window['Stop'].update(disabled=False)
                     delay -= 1
