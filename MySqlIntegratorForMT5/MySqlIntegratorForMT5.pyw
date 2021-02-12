@@ -22,12 +22,14 @@ class Settings:
     Username = ''
     Password = ''
     Database = ''
+    Delay = ''
     VerboseLogging = False
 
     def setValuesFromWindow(self):
         self.MySqlHost = window['Host'].get()
         self.Username = window['User'].get()
         self.Database = window['Database'].get()
+        self.Delay = window['Delay'].get()
         self.VerboseLogging = window['Verbose'].get()
 
         if window['Password'].get() != __hiddenPaswword__:
@@ -154,9 +156,43 @@ class IntegrationTask:
 
     def sendPositions(self):
         log("sendPositions started", "verbose")
-        # TODO
+        
+        db = self.getDbConnection()
+        dbCursor = db.cursor()
+
         positions = self.getPositions()
-        print(positions)
+        
+        for position in positions:
+            stmt = f"""
+                UPDATE Position SET
+                    `time`='{position.time}',
+                    `time_msc`='{position.time_msc}',
+                    `time_update`='{position.time_update}',
+                    `time_update_msc`='{position.time_update_msc}',
+                    `type`='{position.type}',
+                    `magic`='{position.magic}',
+                    `identifier`='{position.identifier}',
+                    `reason`='{position.reason}',
+                    `volume`='{position.volume}',
+                    `price_open`='{position.price_open}',
+                    `sl`='{position.sl}',
+                    `tp`='{position.tp}',
+                    `price_current`='{position.price_current}',
+                    `swap`='{position.swap}',
+                    `profit`='{position.profit}',
+                    `symbol`='{position.symbol}',
+                    `comment`='{position.comment}',
+                    `external_id`='{position.external_id}'
+                WHERE `login`='{self._login}' AND `ticket`='{position.ticket}'"""
+            
+            dbCursor.execute(stmt)
+            if dbCursor.rowcount == 0:
+                stmt = "INSERT INTO Position (`login`, `ticket`, `time`, `time_msc`, `time_update`, `time_update_msc`, `type`, `magic`, `identifier`, `reason`, `volume`, `price_open`, `sl`, `tp`, `price_current`, `swap`, `profit`, `symbol`, `comment`, `external_id`)"
+                stmt += f" VALUES ('{self._login}', '{position.ticket}', '{position.time}', '{position.time_msc}', '{position.time_update}', '{position.time_update_msc}', '{position.type}', '{position.magic}', '{position.identifier}', '{position.reason}', '{position.volume}', '{position.price_open}', '{position.sl}', '{position.tp}', '{position.price_current}', '{position.swap}', '{position.profit}', '{position.symbol}', '{position.comment}', '{position.external_id}')"
+                dbCursor.execute(stmt)
+                
+            db.commit()
+
         log("sendPositions ended", "verbose")
 
     def sendHistory(self):
@@ -188,15 +224,13 @@ class IntegrationTask:
         log("Integration started", "verbose")
 
         try:
-            window['Stop'].update(disabled=False)
-            window['Start'].update(disabled=True)
-            window['Host'].update(disabled=True, text_color='dark grey')
-            window['User'].update(disabled=True, text_color='dark grey')
-            window['Password'].update(settings.displayPassword(), disabled=True, text_color='dark grey')
-            window['Database'].update(disabled=True, text_color='dark grey')
-            window['Verbose'].update(disabled=True)
+            enableFieldsStarted()
 
-            delay = 0
+            try:
+                delay = int(settings.Delay)
+            except ValueError:
+                delay = 0
+            
             forceAccountInfoUpdate = True
             while self._running:
                 if delay == 0:
@@ -213,25 +247,42 @@ class IntegrationTask:
                     window['Output'].update(f'Waiting... {delay}')
                     time.sleep(1)
 
-            window['Output'].update('')
-            window['Stop'].update(disabled=True)
-            window['Start'].update(disabled=False)
-            window['Host'].update(disabled=False, text_color='white')
-            window['User'].update(disabled=False, text_color='white')
-            window['Password'].update(disabled=False, text_color='white')
-            window['Database'].update(disabled=False, text_color='white')
-            window['Verbose'].update(disabled=False)
+            enableFieldsStopped()
         except Exception as ex:
             log(ex, 'error')
-            window['Output'].update(f'Exception: {ex}', text_color='red')
+            enableFieldsStopped(ex)
 
         log("Integration stopped", "verbose")
-        
+
+def enableFieldsStarted():
+    window['Stop'].update(disabled=False)
+    window['Start'].update(disabled=True)
+    window['Host'].update(disabled=True, text_color='dark grey')
+    window['User'].update(disabled=True, text_color='dark grey')
+    window['Password'].update(settings.displayPassword(), disabled=True, text_color='dark grey')
+    window['Database'].update(disabled=True, text_color='dark grey')
+    window['Delay'].update(disabled=True, text_color='dark grey')
+    window['Verbose'].update(disabled=True)
+
+def enableFieldsStopped(exception = None):
+    if exception != None:
+        window['Output'].update(f'Exception: {exception}', text_color='red')
+    else:
+        window['Output'].update('')
+
+    window['Stop'].update(disabled=True)
+    window['Start'].update(disabled=False)
+    window['Host'].update(disabled=False, text_color='white')
+    window['User'].update(disabled=False, text_color='white')
+    window['Password'].update(disabled=False, text_color='white')
+    window['Database'].update(disabled=False, text_color='white')
+    window['Delay'].update(disabled=False, text_color='white')
+    window['Verbose'].update(disabled=False)
+
 def findOrCreateLogFilePath():
     import os
     if not os.path.exists(__logFileName__):
-        with open(__logFileName__, 'a+') as f:
-            f.write();
+        open(__logFileName__, 'a+').close()
     return __logFileName__
 
 def showLogFile():
@@ -255,13 +306,14 @@ def createWindow():
 
     # Define the window's contents
     layout = [
-        [sg.Text('MySql Host', size=(11,1)), sg.Input(settings.MySqlHost, key='Host'), ],
-        [sg.Text('Username', size=(11,1)), sg.Input(settings.Username, key='User')],
-        [sg.Text('Password', size=(11,1)), sg.Input(settings.displayPassword(), key='Password')],
-        [sg.Text('Database', size=(11,1)), sg.Input(settings.Database, key='Database')],
+        [sg.Text('MySql Host:', size=(15,1)), sg.Input(settings.MySqlHost, key='Host'), ],
+        [sg.Text('Username:', size=(15,1)), sg.Input(settings.Username, key='User')],
+        [sg.Text('Password:', size=(15,1)), sg.Input(settings.displayPassword(), key='Password')],
+        [sg.Text('Database:', size=(15,1)), sg.Input(settings.Database, key='Database')],
+        [sg.Text('Delay (in seconds):', size=(15,1)), sg.Input(settings.Delay, key='Delay')],
         [sg.Checkbox('Verbose Logs', settings.VerboseLogging,  key='Verbose')],
         [sg.Text(key='Output', size=(50,1), text_color='yellow')],
-        [sg.Button('Start', size=(16,1)), sg.Button('Stop', size=(16,1), disabled=True), sg.Button('Logs', size=(16,1))]
+        [sg.Button('Start', size=(17,1)), sg.Button('Stop', size=(17,1), disabled=True), sg.Button('Logs', size=(17,1))]
     ]
 
     # Create the window
@@ -295,7 +347,7 @@ def main():
                 showLogFile()
         except Exception as ex:
             log(ex, 'error')
-            window['Output'].update(f'Exception: {ex}', text_color='red')
+            enableFieldsStopped(ex)
 
     log("Main process ended", "info")
 
